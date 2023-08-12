@@ -1,9 +1,9 @@
 import React from 'react'
 import '../css/Navbar.css'
 
-const ClearBoardBtn = () => {
+const ClearBoardBtn = ({ onClearBoard }) => {
   return (
-    <button className='clear-btn'>
+    <button className='clear-btn' onClick={onClearBoard}>
         Clear The Board
     </button>
   )

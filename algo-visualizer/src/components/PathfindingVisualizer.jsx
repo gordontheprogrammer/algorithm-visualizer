@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Node from './Node';
 import {dijkstra, getNodesInShortestPathOrder} from '../algorithms/dijkstra';
 
+
 import '../css/PathfindingVisualizer.css';
 
 const START_NODE_ROW = 10;
@@ -17,6 +18,14 @@ export default class PathfindingVisualizer extends Component {
       mouseIsPressed: false,
     };
   }
+
+  handleClearBoard = () => {
+    console.log('Clearing the board...')
+    const grid = getInitialGrid();
+    console.log(grid)
+    this.setState({ grid });
+  };
+
 
   componentDidMount() {
     const grid = getInitialGrid();
@@ -76,10 +85,14 @@ export default class PathfindingVisualizer extends Component {
   render() {
     const {grid, mouseIsPressed} = this.state;
 
+   
     return (
       <>
         <button className='btn-style' onClick={() => this.visualizeDijkstra()}>
           Visualize Dijkstra's Algorithm
+        </button>
+        <button className='btn-style' onClick={() => this.handleClearBoard()}>
+          Clear Board
         </button>
         <div className="grid">
           {grid.map((row, rowIdx) => {
